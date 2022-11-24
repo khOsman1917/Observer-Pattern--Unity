@@ -11,6 +11,8 @@ public class GameEvent : MonoBehaviour
     public event Action<int> onDoorOpenTriggerEnter;
     public event Action<int> onDoorCloseTriggerEnter;
 
+    public event Action<GameObject> onItemTriggerEnter;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -20,6 +22,13 @@ public class GameEvent : MonoBehaviour
             Debug.Log("Game Event instance inited");
         }
         
+    }
+
+
+    public void OnItemTriggerEnter(GameObject _gameObject)
+    {
+        if (onItemTriggerEnter is null) return;
+        onItemTriggerEnter(_gameObject);
     }
 
 

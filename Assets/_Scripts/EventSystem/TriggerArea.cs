@@ -10,14 +10,18 @@ public class TriggerArea : MonoBehaviour
 
     //Trigger Points
     private void OnTriggerEnter(Collider other)
-    {       
-        GameEvent.Instance.OnDoorOpenTriggerEnter(this.doorId);   
+    {
+        if(other.tag == "Player")
+        {
+            GameEvent.Instance.OnDoorOpenTriggerEnter(this.doorId);
+        }
+       
     }
 
     
 
     private void OnTriggerExit(Collider other)
-    {         
-        GameEvent.Instance.OnDoorCloseTriggerEnter(this.doorId);  
+    {
+        if (other.tag == "Player") GameEvent.Instance.OnDoorCloseTriggerEnter(this.doorId);  
     }
 }
